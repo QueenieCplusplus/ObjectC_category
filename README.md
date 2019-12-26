@@ -8,8 +8,7 @@
                 // 聲明方法
                 // 不允許新增變數
                 // 新增的方法名稱不能與類別本身存在的方法名稱一樣
-                // 否則會產生衝突
-                // 如有衝突發生，會以類別為主
+                // 否則會被覆寫
                
              @end
              
@@ -58,6 +57,77 @@ NSObject+QPK.m
              @end
 
 實作範例如下：
+以下需要先透過檔包含引入
+否則會出現錯誤資訊
+
+QQQ.h
+一標頭檔
+
+                #import<Foundation/Foundation.h>
+                
+                @interface QQQ: NSObject
+                {
+                
+                   int p;
+                
+                }
+                -(void)setP;
+                -(void)printP;
+                
+                @end
+
+QQQ+PPP.h
+檔包含標頭檔
+宣告分類
+
+                #import<Foundation/Foundation.h>
+                #import"QQQ.h"
+                
+                @interface QQQ(PPP)
+                
+                -(void)setP;
+                
+                @end
+
+QQQ+PPP.m
+檔包含分類檔
+定義分類
+                #import"PPP.h"
+                
+                @implementation QQQ(PPP)
+                
+                -(void)setP
+                {
+                
+                   p=99;
+                
+                }
+                         
+                @end
+
+main.h
+生命週期中引入物件
+
+               #import<Foundation/Foundation.h>
+               #import"QQQ.h"
+               #import"QQQ+PPP.h"
+               
+               int main()
+               {
+               
+                 QQQ *q=[[QQQ alloc]init];
+                 
+                 [q setP]; // 以分類方法為優先，原始方法已經被覆寫。
+                 
+                 [q printP];
+                   
+               
+                 return 0;
+               }
+
+
+
+
 
 
 
