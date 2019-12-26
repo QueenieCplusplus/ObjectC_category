@@ -25,7 +25,30 @@
               [物件名稱 新增方法名稱]
               
               
-示意圖
+分類檔案示意圖
 
+                 Category QPK on NSObject
+                         |
+                         |
+               ---------------------
+               |                   |
+               |                   |
+         NSObject+QPK.h       NSObject+QPK.m
+         
 
-  
+NSObject+QPK.h
+
+             #import<Foundation/Foundation.h>
+             
+             @interface NSObject(QPK)
+             
+             @ end
+
+NSObject+QPK.m
+
+             #import"NSObject+QPK.h"
+             
+             @implementation NSObject(QPK)
+             
+             @end
+            
