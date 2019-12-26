@@ -28,6 +28,8 @@
 分類檔案示意圖
 
                  Category QPK on NSObject
+                 QPK 本身不能被具現化
+                 必須透過類別名稱如 NSObject
                          |
                          |
                ---------------------
